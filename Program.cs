@@ -6,9 +6,6 @@ using System.Threading.Tasks;
 
 namespace _26._03
 {
-    using System;
-    using System.Linq;
-
     class Program
     {
         static void Main()
