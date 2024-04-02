@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace _26._03
 {
-    using System;
-    using System.Linq;
+    class Student
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int Age { get; set; }
+        public string University { get; set; }
+    }
 
     class Program
     {
@@ -17,52 +22,62 @@ namespace _26._03
             Console.OutputEncoding = Encoding.Unicode;
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.CursorVisible = false;
-            string[] cities = new string[]
-            {
-            "Kyiv", "Lviv", "Kharkiv", "Dnipro", "Odessa", "Zaporizhzhia", "Kherson"
-            };
+            List<Student> students = new List<Student>
+        {
+            new Student { FirstName = "Boris", LastName = "Johnson", Age = 22, University = "Oxford" },
+            new Student { FirstName = "Alice", LastName = "Brown", Age = 20, University = "MIT" },
+            new Student { FirstName = "John", LastName = "Brooks", Age = 19, University = "Harvard" },
+            new Student { FirstName = "Natalie", LastName = "Smith", Age = 21, University = "MIT" },
+        };
 
-            Console.WriteLine("Весь масив міст:");
-            foreach (var city in cities)
+            Console.WriteLine("Весь масив студентів:");
+            foreach (var student in students)
             {
-                Console.WriteLine(city);
+                Console.WriteLine($"{student.FirstName} {student.LastName}, {student.Age} років, {student.University}");
             }
 
-            int desiredLength = 5; 
-            var filteredCities = cities.Where(city => city.Length == desiredLength);
-            Console.WriteLine($"\nМіста з назвою довжиною {desiredLength} символів:");
-            foreach (var city in filteredCities)
+            var borisStudents = students.Where(student => student.FirstName == "Boris");
+            Console.WriteLine("\nСписок студентів з ім'ям Boris:");
+            foreach (var student in borisStudents)
             {
-                Console.WriteLine(city);
+                Console.WriteLine($"{student.FirstName} {student.LastName}");
             }
 
-            var citiesStartingWithA = cities.Where(city => city.StartsWith("A", StringComparison.OrdinalIgnoreCase));
-            Console.WriteLine("\nМіста, назви яких починаються з літери A:");
-            foreach (var city in citiesStartingWithA)
+            var broStudents = students.Where(student => student.LastName.StartsWith("Bro", StringComparison.OrdinalIgnoreCase));
+            Console.WriteLine("\nСписок студентів з прізвищем, яке починається з Bro:");
+            foreach (var student in broStudents)
             {
-                Console.WriteLine(city);
+                Console.WriteLine($"{student.FirstName} {student.LastName}");
             }
 
-            var citiesEndingWithM = cities.Where(city => city.EndsWith("M", StringComparison.OrdinalIgnoreCase));
-            Console.WriteLine("\nМіста, назви яких закінчуються літерою M:");
-            foreach (var city in citiesEndingWithM)
+            var olderThan19Students = students.Where(student => student.Age > 19);
+            Console.WriteLine("\nСписок студентів, старших 19 років:");
+            foreach (var student in olderThan19Students)
             {
-                Console.WriteLine(city);
+                Console.WriteLine($"{student.FirstName} {student.LastName}");
             }
 
-            var citiesStartingWithNAndEndingWithK = cities.Where(city => city.StartsWith("N", StringComparison.OrdinalIgnoreCase) && city.EndsWith("K", StringComparison.OrdinalIgnoreCase));
-            Console.WriteLine("\nМіста, назви яких починаються з літери N і закінчуються літерою K:");
-            foreach (var city in citiesStartingWithNAndEndingWithK)
+            var between20And23Students = students.Where(student => student.Age >= 20 && student.Age <= 23);
+            Console.WriteLine("\nСписок студентів, старших 20 років і молодших 23 років:");
+            foreach (var student in between20And23Students)
             {
-                Console.WriteLine(city);
+                Console.WriteLine($"{student.FirstName} {student.LastName}");
             }
 
-            var citiesStartingWithNe = cities.Where(city => city.StartsWith("Ne", StringComparison.OrdinalIgnoreCase)).OrderByDescending(city => city);
-            Console.WriteLine("\nМіста, назви яких починаються з \"Ne\" (відсортовані за спаданням):");
-            foreach (var city in citiesStartingWithNe)
+            var mitStudents = students.Where(student => student.University == "MIT");
+            Console.WriteLine("\nСписок студентів, які навчаються в MIT:");
+            foreach (var student in mitStudents)
             {
-                Console.WriteLine(city);
+                Console.WriteLine($"{student.FirstName} {student.LastName}");
+            }
+            var oxfordStudentsOver18 = students
+                .Where(student => student.University == "Oxford" && student.Age > 18)
+                .OrderByDescending(student => student.Age);
+            Console.WriteLine("\nСписок студентів, які навчаються в Oxford, і вік яких старше 18 років (відсортовано за віком, за спаданням):");
+            foreach (var student in oxfordStudentsOver18)
+            {
+                Console.WriteLine($"{student.FirstName} {student.LastName}, {student.Age} років");
             }
         }
-    }
+    } 
 }
