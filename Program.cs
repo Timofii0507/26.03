@@ -6,9 +6,6 @@ using System.Threading.Tasks;
 
 namespace _26._03
 {
-    using System;
-    using System.Linq;
-
     class Program
     {
         static void Main()
@@ -60,7 +57,7 @@ namespace _26._03
             var citiesStartingWithNe = cities.Where(city => city.StartsWith("Ne", StringComparison.OrdinalIgnoreCase)).OrderByDescending(city => city);
             Console.WriteLine("\nМіста, назви яких починаються з \"Ne\" (відсортовані за спаданням):");
             foreach (var city in citiesStartingWithNe)
-            {
+            { 
                 Console.WriteLine(city);
             }
         }
