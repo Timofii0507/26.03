@@ -6,110 +6,67 @@ using System.Threading.Tasks;
 
 namespace _26._03
 {
-    public class Firma
+    class Employee
     {
-        public string NazvaFirmi { get; set; }
-        public DateTime DataZasnuyvannya { get; set; }
-        public string ProfilBiznesu { get; set; }
-        public string PIBDirektora { get; set; }
-        public int KількістьПрацівників { get; set; }
-        public string Adresa { get; set; }
-
-        public Firma(string nazvaFirmi, DateTime dataZasnuyvannya, string profilBiznesu,
-                     string pibDirektora, int кількістьПрацівників, string adresa)
-        {
-            NazvaFirmi = nazvaFirmi;
-            DataZasnuyvannya = dataZasnuyvannya;
-            ProfilBiznesu = profilBiznesu;
-            PIBDirektora = pibDirektora;
-            KількістьПрацівників = кількістьПрацівників;
-            Adresa = adresa;
-        }
+        public string FullName { get; set; }
+        public string Position { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Email { get; set; }
+        public decimal Salary { get; set; }
     }
 
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
+            var employees = new List<Employee>
+        {
+            new Employee { FullName = "John Doe", Position = "Manager", PhoneNumber = "230123456", Email = "john.doe@example.com", Salary = 50000 },
+            new Employee { FullName = "Jane Smith", Position = "Developer", PhoneNumber = "231987654", Email = "jane.smith@example.com", Salary = 60000 },
+        };
             Console.InputEncoding = Encoding.Unicode;
             Console.OutputEncoding = Encoding.Unicode;
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.CursorVisible = false;
-            List<Firma> firmi = new List<Firma>()
+
+            var allEmployees = employees.ToList();
+
+            decimal minSalary = 55000;
+            var highSalaryEmployees = employees.Where(e => e.Salary > minSalary).ToList();
+
+            var managerEmployees = employees.Where(e => e.Position == "Manager").ToList();
+
+            var phoneStartsWith23 = employees.Where(e => e.PhoneNumber.StartsWith("23")).ToList();
+
+            var emailStartsWithDi = employees.Where(e => e.Email.StartsWith("di")).ToList();
+
+            var lionelEmployees = employees.Where(e => e.FullName.Contains("Lionel")).ToList();
+
+            Console.WriteLine("Всі працівники:");
+            PrintEmployees(allEmployees);
+
+            Console.WriteLine("\nПрацівники з високою заробітною платою:");
+            PrintEmployees(highSalaryEmployees);
+
+            Console.WriteLine("\nПрацівники-менеджери:");
+            PrintEmployees(managerEmployees);
+
+            Console.WriteLine("\nПрацівники з номером телефону, що починається з \"23\":");
+            PrintEmployees(phoneStartsWith23);
+
+            Console.WriteLine("\nПрацівники з Email, що починається з \"di\":");
+            PrintEmployees(emailStartsWithDi);
+
+            Console.WriteLine("\nПрацівники з ім'ям \"Lionel\":");
+            PrintEmployees(lionelEmployees);
+        }
+
+        static void PrintEmployees(List<Employee> employees)
+        {
+            foreach (var employee in employees)
             {
-                new Firma("IT-Solutions", new DateTime(2020, 10, 1), "IT", "Петренко Іван Васильович", 150, "Київ, вул. Хрещатик, 15"),
-                new Firma("Marketing Expert", new DateTime(2018, 5, 12), "Маркетинг", "Сидоренко Олена Петрівна", 75, "Львів, вул. Привокзальна, 10"),
-                new Firma("Food Delivery", new DateTime(2022, 2, 14), "Доставка їжі", "Іванов Андрій Сергійович", 30, "Одеса, вул. Дерибасівська, 20"),
-                new Firma("Web Development", new DateTime(2019, 3, 8), "Розробка веб-сайтів", "Білоус Ольга Миколаївна", 60, "Харків, вул. Сумська, 45"),
-                new Firma("Legal Consulting", new DateTime(2017, 11, 23), "Юридичні консультації", "Чорний Максим Олександрович", 40, "Дніпро, вул. Дзержинського, 1"),
-            };
-
-            Console.WriteLine("**Інформація про всі фірми:**");
-            foreach (var firma in firmi)
-                Console.WriteLine($"Назва: {firma.NazvaFirmi}, Дата заснування: {firma.DataZasnuyvannya}, Профіль бізнесу: {firma.ProfilBiznesu}, ПІБ директора: {firma.PIBDirektora}, Кількість працівників: {firma.KількістьПрацівників}, Адреса: {firma.Adresa}");
-            Console.WriteLine();
-
-            Console.WriteLine("**Фірми, які мають у назві слово 'Food':**");
-            var firmiZFood = firmi.Where(f => f.NazvaFirmi.Contains("Food"));
-            foreach (var firma in firmiZFood)
-                Console.WriteLine($"Назва: {firma.NazvaFirmi}, Дата заснування: {firma.DataZasnuyvannya}, Профіль бізнесу: {firma.ProfilBiznesu}, ПІБ директора: {firma.PIBDirektora}, Кількість працівників: {firma.KількістьПрацівників}, Адреса: {firma.Adresa}");
-            Console.WriteLine();
-
-            Console.WriteLine("**Фірми, які працюють у галузі маркетингу:**");
-            var marketingFirmi = firmi.Where(f => f.ProfilBiznesu == "Маркетинг");
-            foreach (var firma in marketingFirmi)
-                Console.WriteLine($"Назва: {firma.NazvaFirmi}, Дата заснування: {firma.DataZasnuyvannya}, Профіль бізнесу: {firma.ProfilBiznesu}, ПІБ директора: {firma.PIBDirektora}, Кількість працівників: {firma.KількістьПрацівників}, Адреса: {firma.Adresa}");
-            Console.WriteLine();
-
-            Console.WriteLine("**Фірми, які працюють у галузі маркетингу або IT:**");
-            var marketingITFirmi = firmi.Where(f => f.ProfilBiznesu == "Маркетинг" || f.ProfilBiznesu == "IT");
-            foreach (var firma in marketingITFirmi)
-                Console.WriteLine($"Назва: {firma.NazvaFirmi}, Дата заснування: {firma.DataZasnuyvannya}, Профіль бізнесу: {firma.ProfilBiznesu}, ПІБ директора: {firma.PIBDirektora}, Кількість працівників: {firma.KількістьПрацівників}, Адреса: {firma.Adresa}");
-            Console.WriteLine();
-
-            Console.WriteLine("**Фірми з кількістю працівників більшою, ніж 100:**");
-            var firmiZ100Pracivnikami = firmi.Where(f => f.KількістьПрацівників > 100);
-            foreach (var firma in firmiZ100Pracivnikami)
-                Console.WriteLine($"Назва: {firma.NazvaFirmi}, Дата заснування: {firma.DataZasnuyvannya}, Профіль бізнесу: {firma.ProfilBiznesu}, ПІБ директора: {firma.PIBDirektora}, Кількість працівників: {firma.KількістьПрацівників}, Адреса: {firma.Adresa}");
-            Console.WriteLine();
-
-            Console.WriteLine("**Фірми з кількістю працівників у діапазоні від 100 до 300:**");
-            var firmiZ100_300Pracivnikami = firmi.Where(f => f.KількістьПрацівників >= 100 && f.KількістьПрацівників <= 300);
-            foreach (var firma in firmiZ100_300Pracivnikami)
-                Console.WriteLine($"Назва: {firma.NazvaFirmi}, Дата заснування: {firma.DataZasnuyvannya}, Профіль бізнесу: {firma.ProfilBiznesu}, ПІБ директора: {firma.PIBDirektora}, Кількість працівників: {firma.KількістьПрацівників}, Адреса: {firma.Adresa}");
-            Console.WriteLine();
-
-            Console.WriteLine("**Фірми, які знаходяться в Лондоні:**");
-            var londonskiFirmi = firmi.Where(f => f.Adresa.Contains("Лондон"));
-            foreach (var firma in londonskiFirmi)
-                Console.WriteLine($"Назва: {firma.NazvaFirmi}, Дата заснування: {firma.DataZasnuyvannya}, Профіль бізнесу: {firma.ProfilBiznesu}, ПІБ директора: {firma.PIBDirektora}, Кількість працівників: {firma.KількістьПрацівників}, Адреса: {firma.Adresa}");
-            Console.WriteLine();
-
-            Console.WriteLine("**Фірми, в яких прізвище директора White:**");
-            var whiteDirectorFirmi = firmi.Where(f => f.PIBDirektora.Contains("White"));
-            foreach (var firma in whiteDirectorFirmi)
-                Console.WriteLine($"Назва: {firma.NazvaFirmi}, Дата заснування: {firma.DataZasnuyvannya}, Профіль бізнесу: {firma.ProfilBiznesu}, ПІБ директора: {firma.PIBDirektora}, Кількість працівників: {firma.KількістьПрацівників}, Адреса: {firma.Adresa}");
-            Console.WriteLine();
-
-            Console.WriteLine("**Фірми, які засновані більше двох років тому:**");
-            var firmiZDvokhRokivNzad = firmi.Where(f => (DateTime.Now - f.DataZasnuyvannya).TotalDays > 365 * 2);
-            foreach (var firma in firmiZDvokhRokivNzad)
-                Console.WriteLine($"Назва: {firma.NazvaFirmi}, Дата заснування: {firma.DataZasnuyvannya}, Профіль бізнесу: {firma.ProfilBiznesu}, ПІБ директора: {firma.PIBDirektora}, Кількість працівників: {firma.KількістьПрацівників}, Адреса: {firma.Adresa}");
-            Console.WriteLine();
-
-            Console.WriteLine("**Фірми з дня заснування яких минуло 123 дні:**");
-            var firmiZ123Dniami = firmi.Where(f => (DateTime.Now - f.DataZasnuyvannya).TotalDays == 123);
-            foreach (var firma in firmiZ123Dniami)
-                Console.WriteLine($"Назва: {firma.NazvaFirmi}, Дата заснування: {firma.DataZasnuyvannya}, Профіль бізнесу: {firma.ProfilBiznesu}, ПІБ директора: {firma.PIBDirektora}, Кількість працівників: {firma.KількістьПрацівників}, Адреса: {firma.Adresa}");
-            Console.WriteLine();
-
-            Console.WriteLine("**Фірми, в яких прізвище директора Black і мають у назві фірми слово 'White':**");
-            var blackDirectorWhiteFirmi = firmi.Where(f => f.PIBDirektora.Contains("Black") && f.NazvaFirmi.Contains("White"));
-            foreach (var firma in blackDirectorWhiteFirmi)
-                Console.WriteLine($"Назва: {firma.NazvaFirmi}, Дата заснування: {firma.DataZasnuyvannya}, Профіль бізнесу: {firma.ProfilBiznesu}, ПІБ директора: {firma.PIBDirektora}, Кількість працівників: {firma.KількістьПрацівників}, Адреса: {firma.Adresa}");
-            Console.WriteLine();
-
-            Console.ReadKey();
+                Console.WriteLine($"{employee.FullName} ({employee.Position}): {employee.PhoneNumber}, {employee.Email}, ЗП: {employee.Salary}");
+            }
         }
     }
 }
