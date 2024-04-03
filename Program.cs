@@ -46,147 +46,68 @@ namespace _26._03
 
             Console.WriteLine("**Інформація про всі фірми:**");
             foreach (var firma in firmi)
-            {
-                Console.WriteLine($"Назва: {firma.NazvaFirmi}");
-                Console.WriteLine($"Дата заснування: {firma.DataZasnuyvannya}");
-                Console.WriteLine($"Профіль бізнесу: {firma.ProfilBiznesu}");
-                Console.WriteLine($"ПІБ директора: {firma.PIBDirektora}");
-                Console.WriteLine($"Кількість працівників: {firma.KількістьПрацівників}");
-                Console.WriteLine($"Адреса: {firma.Adresa}");
-                Console.WriteLine("----------------------------------");
-            }
+                Console.WriteLine($"Назва: {firma.NazvaFirmi}, Дата заснування: {firma.DataZasnuyvannya}, Профіль бізнесу: {firma.ProfilBiznesu}, ПІБ директора: {firma.PIBDirektora}, Кількість працівників: {firma.KількістьПрацівників}, Адреса: {firma.Adresa}");
+            Console.WriteLine();
 
-            Console.WriteLine("\n**Фірми, які мають у назві слово 'Food':**");
+            Console.WriteLine("**Фірми, які мають у назві слово 'Food':**");
             var firmiZFood = firmi.Where(f => f.NazvaFirmi.Contains("Food"));
             foreach (var firma in firmiZFood)
-            {
-                Console.WriteLine($"Назва: {firma.NazvaFirmi}");
-                Console.WriteLine($"Дата заснування: {firma.DataZasnuyvannya}");
-                Console.WriteLine($"Профіль бізнесу: {firma.ProfilBiznesu}");
-                Console.WriteLine($"ПІБ директора: {firma.PIBDirektora}");
-                Console.WriteLine($"Кількість працівників: {firma.KількістьПрацівників}");
-                Console.WriteLine($"Адреса: {firma.Adresa}");
-                Console.WriteLine("----------------------------------");
-            }
+                Console.WriteLine($"Назва: {firma.NazvaFirmi}, Дата заснування: {firma.DataZasnuyvannya}, Профіль бізнесу: {firma.ProfilBiznesu}, ПІБ директора: {firma.PIBDirektora}, Кількість працівників: {firma.KількістьПрацівників}, Адреса: {firma.Adresa}");
+            Console.WriteLine();
 
-            Console.WriteLine("\n**Фірми, які працюють у галузі маркетингу:**");
+            Console.WriteLine("**Фірми, які працюють у галузі маркетингу:**");
             var marketingFirmi = firmi.Where(f => f.ProfilBiznesu == "Маркетинг");
             foreach (var firma in marketingFirmi)
-            {
-                Console.WriteLine($"Назва: {firma.NazvaFirmi}");
-                Console.WriteLine($"Дата заснування: {firma.DataZasnuyvannya}");
-                Console.WriteLine($"Профіль бізнесу: {firma.ProfilBiznesu}");
-                Console.WriteLine($"ПІБ директора: {firma.PIBDirektora}");
-                Console.WriteLine($"Кількість працівників: {firma.KількістьПрацівників}");
-                Console.WriteLine($"Адреса: {firma.Adresa}");
-                Console.WriteLine("----------------------------------");
-            }
+                Console.WriteLine($"Назва: {firma.NazvaFirmi}, Дата заснування: {firma.DataZasnuyvannya}, Профіль бізнесу: {firma.ProfilBiznesu}, ПІБ директора: {firma.PIBDirektora}, Кількість працівників: {firma.KількістьПрацівників}, Адреса: {firma.Adresa}");
+            Console.WriteLine();
 
-            Console.WriteLine("\n**Фірми, які працюють у галузі маркетингу або IT:**");
+            Console.WriteLine("**Фірми, які працюють у галузі маркетингу або IT:**");
             var marketingITFirmi = firmi.Where(f => f.ProfilBiznesu == "Маркетинг" || f.ProfilBiznesu == "IT");
             foreach (var firma in marketingITFirmi)
-            {
-                Console.WriteLine($"Назва: {firma.NazvaFirmi}");
-                Console.WriteLine($"Дата заснування: {firma.DataZasnuyvannya}");
-                Console.WriteLine($"Профіль бізнесу: {firma.ProfilBiznesu}");
-                Console.WriteLine($"ПІБ директора: {firma.PIBDirektora}");
-                Console.WriteLine($"Кількість працівників: {firma.KількістьПрацівників}");
-                Console.WriteLine($"Адреса: {firma.Adresa}");
-                Console.WriteLine("----------------------------------");
-            }
+                Console.WriteLine($"Назва: {firma.NazvaFirmi}, Дата заснування: {firma.DataZasnuyvannya}, Профіль бізнесу: {firma.ProfilBiznesu}, ПІБ директора: {firma.PIBDirektora}, Кількість працівників: {firma.KількістьПрацівників}, Адреса: {firma.Adresa}");
+            Console.WriteLine();
 
-            Console.WriteLine("\n**Фірми з кількістю працівників більшою, ніж 100:**");
+            Console.WriteLine("**Фірми з кількістю працівників більшою, ніж 100:**");
             var firmiZ100Pracivnikami = firmi.Where(f => f.KількістьПрацівників > 100);
             foreach (var firma in firmiZ100Pracivnikami)
-            {
-                Console.WriteLine($"Назва: {firma.NazvaFirmi}");
-                Console.WriteLine($"Дата заснування: {firma.DataZasnuyvannya}");
-                Console.WriteLine($"Профіль бізнесу: {firma.ProfilBiznesu}");
-                Console.WriteLine($"ПІБ директора: {firma.PIBDirektora}");
-                Console.WriteLine($"Кількість працівників: {firma.KількістьПрацівників}");
-                Console.WriteLine($"Адреса: {firma.Adresa}");
-                Console.WriteLine("----------------------------------");
-            }
+                Console.WriteLine($"Назва: {firma.NazvaFirmi}, Дата заснування: {firma.DataZasnuyvannya}, Профіль бізнесу: {firma.ProfilBiznesu}, ПІБ директора: {firma.PIBDirektora}, Кількість працівників: {firma.KількістьПрацівників}, Адреса: {firma.Adresa}");
+            Console.WriteLine();
 
-            Console.WriteLine("\n**Фірми з кількістю працівників у діапазоні від 100 до 300:**");
-            var firmiZ100Do300Pracivnikami = firmi.Where(f => f.KількістьПрацівників >= 100 && f.KількістьПрацівників <= 300);
-            foreach (var firma in firmiZ100Do300Pracivnikami)
-            {
-                Console.WriteLine($"Назва: {firma.NazvaFirmi}");
-                Console.WriteLine($"Дата заснування: {firma.DataZasnuyvannya}");
-                Console.WriteLine($"Профіль бізнесу: {firma.ProfilBiznesu}");
-                Console.WriteLine($"ПІБ директора: {firma.PIBDirektora}");
-                Console.WriteLine($"Кількість працівників: {firma.KількістьПрацівників}");
-                Console.WriteLine($"Адреса: {firma.Adresa}");
-                Console.WriteLine("----------------------------------");
-            }
+            Console.WriteLine("**Фірми з кількістю працівників у діапазоні від 100 до 300:**");
+            var firmiZ100_300Pracivnikami = firmi.Where(f => f.KількістьПрацівників >= 100 && f.KількістьПрацівників <= 300);
+            foreach (var firma in firmiZ100_300Pracivnikami)
+                Console.WriteLine($"Назва: {firma.NazvaFirmi}, Дата заснування: {firma.DataZasnuyvannya}, Профіль бізнесу: {firma.ProfilBiznesu}, ПІБ директора: {firma.PIBDirektora}, Кількість працівників: {firma.KількістьПрацівників}, Адреса: {firma.Adresa}");
+            Console.WriteLine();
 
-            Console.WriteLine("\n**Фірми, які знаходяться в Лондоні:**");
+            Console.WriteLine("**Фірми, які знаходяться в Лондоні:**");
             var londonskiFirmi = firmi.Where(f => f.Adresa.Contains("Лондон"));
             foreach (var firma in londonskiFirmi)
-            {
-                Console.WriteLine($"Назва: {firma.NazvaFirmi}");
-                Console.WriteLine($"Дата заснування: {firma.DataZasnuyvannya}");
-                Console.WriteLine($"Профіль бізнесу: {firma.ProfilBiznesu}");
-                Console.WriteLine($"ПІБ директора: {firma.PIBDirektora}");
-                Console.WriteLine($"Кількість працівників: {firma.KількістьПрацівників}");
-                Console.WriteLine($"Адреса: {firma.Adresa}");
-                Console.WriteLine("----------------------------------");
-            }
+                Console.WriteLine($"Назва: {firma.NazvaFirmi}, Дата заснування: {firma.DataZasnuyvannya}, Профіль бізнесу: {firma.ProfilBiznesu}, ПІБ директора: {firma.PIBDirektora}, Кількість працівників: {firma.KількістьПрацівників}, Адреса: {firma.Adresa}");
+            Console.WriteLine();
 
-            Console.WriteLine("\n**Фірми, в яких прізвище директора White:**");
-            var whiteDirektoriFirmi = firmi.Where(f => f.PIBDirektora.Split(' ').Last().ToLower() == "white");
-            foreach (var firma in whiteDirektoriFirmi)
-            {
-                Console.WriteLine($"Назва: {firma.NazvaFirmi}");
-                Console.WriteLine($"Дата заснування: {firma.DataZasnuyvannya}");
-                Console.WriteLine($"Профіль бізнесу: {firma.ProfilBiznesu}");
-                Console.WriteLine($"ПІБ директора: {firma.PIBDirektora}");
-                Console.WriteLine($"Кількість працівників: {firma.KількістьПрацівників}");
-                Console.WriteLine($"Адреса: {firma.Adresa}");
-                Console.WriteLine("----------------------------------");
-            }
+            Console.WriteLine("**Фірми, в яких прізвище директора White:**");
+            var whiteDirectorFirmi = firmi.Where(f => f.PIBDirektora.Contains("White"));
+            foreach (var firma in whiteDirectorFirmi)
+                Console.WriteLine($"Назва: {firma.NazvaFirmi}, Дата заснування: {firma.DataZasnuyvannya}, Профіль бізнесу: {firma.ProfilBiznesu}, ПІБ директора: {firma.PIBDirektora}, Кількість працівників: {firma.KількістьПрацівників}, Адреса: {firma.Adresa}");
+            Console.WriteLine();
 
-            Console.WriteLine("\n**Фірми, які засновані більше двох років тому:**");
-            var davnoZasnovaniFirmi = firmi.Where(f => DateTime.Now - f.DataZasnuyvannya > TimeSpan.FromDays(365 * 2));
-            foreach (var firma in davnoZasnovaniFirmi)
-            {
-                Console.WriteLine($"Назва: {firma.NazvaFirmi}");
-                Console.WriteLine($"Дата заснування: {firma.DataZasnuyvannya}");
-                Console.WriteLine($"Профіль бізнесу: {firma.ProfilBiznesu}");
-                Console.WriteLine($"ПІБ директора: {firma.PIBDirektora}");
-                Console.WriteLine($"Кількість працівників: {firma.KількістьПрацівників}");
-                Console.WriteLine($"Адреса: {firma.Adresa}");
-                Console.WriteLine("----------------------------------");
-            }
+            Console.WriteLine("**Фірми, які засновані більше двох років тому:**");
+            var firmiZDvokhRokivNzad = firmi.Where(f => (DateTime.Now - f.DataZasnuyvannya).TotalDays > 365 * 2);
+            foreach (var firma in firmiZDvokhRokivNzad)
+                Console.WriteLine($"Назва: {firma.NazvaFirmi}, Дата заснування: {firma.DataZasnuyvannya}, Профіль бізнесу: {firma.ProfilBiznesu}, ПІБ директора: {firma.PIBDirektora}, Кількість працівників: {firma.KількістьПрацівників}, Адреса: {firma.Adresa}");
+            Console.WriteLine();
 
-            Console.WriteLine("\n**Фірми з дня заснування яких минуло 123 дні:**");
-            var dniFirmi = firmi.Where(f => (DateTime.Now - f.DataZasnuyvannya).Days == 123);
-            foreach (var firma in dniFirmi)
-            {
-                Console.WriteLine($"Назва: {firma.NazvaFirmi}");
-                Console.WriteLine($"Дата заснування: {firma.DataZasnuyvannya}");
-                Console.WriteLine($"Профіль бізнесу: {firma.ProfilBiznesu}");
-                Console.WriteLine($"ПІБ директора: {firma.PIBDirektora}");
-                Console.WriteLine($"Кількість працівників: {firma.KількістьПрацівників}");
-                Console.WriteLine($"Адреса: {firma.Adresa}");
-                Console.WriteLine("----------------------------------");
-            }
+            Console.WriteLine("**Фірми з дня заснування яких минуло 123 дні:**");
+            var firmiZ123Dniami = firmi.Where(f => (DateTime.Now - f.DataZasnuyvannya).TotalDays == 123);
+            foreach (var firma in firmiZ123Dniami)
+                Console.WriteLine($"Назва: {firma.NazvaFirmi}, Дата заснування: {firma.DataZasnuyvannya}, Профіль бізнесу: {firma.ProfilBiznesu}, ПІБ директора: {firma.PIBDirektora}, Кількість працівників: {firma.KількістьПрацівників}, Адреса: {firma.Adresa}");
+            Console.WriteLine();
 
-            Console.WriteLine("\n**Фірми, в яких прізвище директора Black і мають у назві фірми слово 'White':**");
-            var blackWhiteFirmi = firmi.Where(f =>
-                f.PIBDirektora.Split(' ').Last().ToLower() == "black" &&
-                f.NazvaFirmi.Contains("White"));
-            foreach (var firma in blackWhiteFirmi)
-            {
-                Console.WriteLine($"Назва: {firma.NazvaFirmi}");
-                Console.WriteLine($"Дата заснування: {firma.DataZasnuyvannya}");
-                Console.WriteLine($"Профіль бізнесу: {firma.ProfilBiznesu}");
-                Console.WriteLine($"ПІБ директора: {firma.PIBDirektora}");
-                Console.WriteLine($"Кількість працівників: {firma.KількістьПрацівників}");
-                Console.WriteLine($"Адреса: {firma.Adresa}");
-                Console.WriteLine("----------------------------------");
-            }
+            Console.WriteLine("**Фірми, в яких прізвище директора Black і мають у назві фірми слово 'White':**");
+            var blackDirectorWhiteFirmi = firmi.Where(f => f.PIBDirektora.Contains("Black") && f.NazvaFirmi.Contains("White"));
+            foreach (var firma in blackDirectorWhiteFirmi)
+                Console.WriteLine($"Назва: {firma.NazvaFirmi}, Дата заснування: {firma.DataZasnuyvannya}, Профіль бізнесу: {firma.ProfilBiznesu}, ПІБ директора: {firma.PIBDirektora}, Кількість працівників: {firma.KількістьПрацівників}, Адреса: {firma.Adresa}");
+            Console.WriteLine();
 
             Console.ReadKey();
         }
